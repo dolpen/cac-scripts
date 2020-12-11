@@ -15,6 +15,10 @@ EOT
 apt-get -y update
 apt-get -y upgrade
 apt-get -y dist-upgrade
+apt-get -y install language-pack-ja-base language-pack-ja
+update-locale LANG=ja_JP.UTF-8
+update-locale LC_ALL=ja_JP.utf8
+timedatectl set-timezone Asia/Tokyo
 
 # 1. create admin user
 
