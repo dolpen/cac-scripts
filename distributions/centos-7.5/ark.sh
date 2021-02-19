@@ -59,6 +59,16 @@ chown "$1:$1" "$4"
 chmod "$2" "$4"
 }
 
+## Misc.
+
+localectl set-locale LANG=ja_JP.utf8
+timedatectl set-timezone Asia/Tokyo
+
+put_file root 755 /tmp/crontab.temp <<EOT
+15 6 * * * /sbin/reboot
+EOT
+
+crontab -u root /tmp/crontab.temp
 
 ## Libs
 
@@ -157,10 +167,13 @@ OxygenSwimSpeedStatMultiplier=1.000000
 StructurePreventResourceRadiusMultiplier=1.000000
 TribeNameChangeCooldown=15.000000
 PlatformSaddleBuildAreaBoundsMultiplier=1.000000
-StructurePickupTimeAfterPlacement=60.000000
+StructurePickupTimeAfterPlacement=120.000000
 StructurePickupHoldDuration=0.500000
 AllowIntegratedSPlusStructures=True
 AllowHideDamageSourceFromLogs=True
+PlayerCharacterWaterDrainMultiplier=0.500000
+PlayerCharacterFoodDrainMultiplier=0.500000
+ResourcesRespawnPeriodMultiplier=0.300000
 RaidDinoCharacterFoodDrainMultiplier=1.000000
 PvEDinoDecayPeriodMultiplier=1.000000
 KickIdlePlayersPeriod=3600.000000
@@ -180,10 +193,10 @@ alwaysNotifyPlayerJoined=True
 alwaysNotifyPlayerLeft=True
 AllowRaidDinoFeeding=True
 AllowFlyerCarryPvE=True
-NightTimeSpeedScale=30.0
+NightTimeSpeedScale=10.0
 TamingSpeedMultiplier=50.0
-XPMultiplier=5.0
-HarvestAmountMultiplier=8.0
+XPMultiplier=2.5
+HarvestAmountMultiplier=5.0
 ActiveMods=849985437,895711211,1440414363
 
 [/Script/ShooterGame.ShooterGameUserSettings]
@@ -341,5 +354,5 @@ sg.GroundClutterRadius=10000
 SessionName=${SERVICE_TITLE}
 
 [/Script/Engine.GameSession]
-MaxPlayers=25
+MaxPlayers=16
 EOT
