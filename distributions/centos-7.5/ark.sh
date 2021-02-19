@@ -11,12 +11,13 @@ set -e
 echo "${SERVICE_PASS:?'run this script with `SERVICE_PASS` env variable'}" >/dev/null
 # shellcheck disable=SC2016
 echo "${ADMIN_PASS:?'run this script with `ADMIN_PASS` env variable'}" >/dev/null
+
+SERVER_MAP=TheIsland
 SERVICE_USER=steam
 SERVICE_NAME=ark
-SERVICE_TITLE=po
+SERVICE_TITLE="[po]${SERVER_MAP}"
 SERVICE_PORT=7777
 QUERY_PORT=27015
-SERVER_MAP=TheIsland
 ADDITIONAL_ARG=""
 # -automanagemods は 現状ちゃんと動いていない
 # ConfigのModInstallerセクションに ModID記載してると謎の内部動作で ${modid}.mod ファイルが消えたりするので何も設定書かないのが正解
@@ -185,7 +186,8 @@ ItemStackSizeMultiplier=1.000000
 RCONServerGameLogBuffer=600.000000
 AllowHitMarkers=True
 serverPVE=True
-DifficultyOffset=1.0
+DifficultyOffset=5.0
+OverrideOfficialDifficulty=5.0
 bUseCorpseLocator=True
 ShowFloatingDamageText=True
 DisableWeatherFog=True
