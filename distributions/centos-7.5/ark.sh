@@ -15,7 +15,7 @@ echo "${ADMIN_PASS:?'run this script with `ADMIN_PASS` env variable'}" >/dev/nul
 SERVER_MAP=TheIsland
 SERVICE_USER=steam
 SERVICE_NAME=ark
-SERVICE_TITLE="[po]${SERVER_MAP}"
+SERVICE_TITLE="[dolpen.net][JP][${SERVER_MAP}]private"
 SERVICE_PORT=7777
 QUERY_PORT=27015
 ADDITIONAL_ARG=""
@@ -65,7 +65,7 @@ chmod "$2" "$4"
 localectl set-locale LANG=ja_JP.utf8
 timedatectl set-timezone Asia/Tokyo
 
-put_file root 755 /tmp/crontab.temp <<EOT
+put_file root 644 /tmp/crontab.temp <<EOT
 15 6 * * * /sbin/reboot
 EOT
 
@@ -157,6 +157,7 @@ EOT
 
 put_file ${SERVICE_USER} 644 ${SERVICE_HOME}/Config/GameUserSettings.ini <<EOT
 [ServerSettings]
+MaxPlayers=16
 ShowMapPlayerLocation=True
 allowThirdPersonPlayer=True
 ServerCrosshair=True
@@ -354,7 +355,4 @@ sg.GroundClutterRadius=10000
 
 [SessionSettings]
 SessionName=${SERVICE_TITLE}
-
-[/Script/Engine.GameSession]
-MaxPlayers=16
 EOT
